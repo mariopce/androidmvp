@@ -1,5 +1,7 @@
 package eu.saramak.learnenglishwords;
 
+import javax.inject.Inject;
+
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -9,7 +11,7 @@ import rx.functions.Action1;
  */
 public class WordsMockPresenter implements WordsPresenter {
     private WordsSceenView view;
-    private WordsProvider provider;
+    @Inject WordsProvider provider;
     private Subscription sub;
 
     public WordsMockPresenter(WordsSceenView wordsSceenView) {

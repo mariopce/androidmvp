@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import javax.inject.Inject;
+
 
 public class WordsDisplayActivity extends FragmentActivity implements WordsSceenView {
 
-    private WordsPresenter presenter;
+    WordsPresenter presenter;
     private WordsDislpayerView wordDisplayerFragment;
 
     @Override
@@ -28,7 +30,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
                     .commit();
         }
         presenter = new WordsMockPresenter(this);
-        presenter.setProvider(new SlowWordsProvider());
+//        presenter.setProvider(new SlowWordsProvider());
     }
 
 
