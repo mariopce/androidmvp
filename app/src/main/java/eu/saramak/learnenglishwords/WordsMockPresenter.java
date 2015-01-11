@@ -1,7 +1,9 @@
 package eu.saramak.learnenglishwords;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+import dagger.Component;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -16,12 +18,14 @@ public class WordsMockPresenter implements WordsPresenter {
 
     public WordsMockPresenter(WordsSceenView wordsSceenView) {
         view = wordsSceenView;
-
     }
 
-    public WordsMockPresenter() {
-
+    @Singleton
+    @Component(modules = WordsProviderModule.class)
+    interface WordsShop {
+        void provide(WordsMockPresenter presenter);
     }
+
 
     public void setProvider(WordsProvider provider) {
         this.provider = provider;
@@ -29,7 +33,7 @@ public class WordsMockPresenter implements WordsPresenter {
 
     @Override
     public void onResume() {
-        WordsApplication.WordsShop wm = Dagger_WordsApplication$WordsShop.builder().wordsProviderModule(new WordsProviderModule(this)).build();
+        WordsShop wm = Dagger_WordsMockPresenter$WordsShop.builder().wordsProviderModule(new WordsProviderModule(this)).build();
         wm.provide(this);
         view.showProgress();
 

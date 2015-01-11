@@ -24,11 +24,7 @@ public class WordsApplication extends Application {
         void inject(WordsApplication application);
     }
 
-    @Singleton
-    @Component(modules = WordsProviderModule.class)
-    interface WordsShop {
-        void provide(WordsMockPresenter presenter);
-    }
+
 
     @Inject
     LocationManager locationManager; // for some reason.
