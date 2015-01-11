@@ -22,7 +22,6 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_display);
-        ((WordsApplication) getApplication()).component().inject(this);
 
         if (savedInstanceState == null) {
             wordDisplayerFragment = new PlaceholderFragment();
@@ -31,7 +30,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
                     .commit();
         }
         presenter = new WordsMockPresenter(this);
-        ((WordsApplication) getApplication()).component().inject((WordsMockPresenter)presenter);
+
 //        presenter.setProvider(new SlowWordsProvider());
     }
 

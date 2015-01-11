@@ -19,10 +19,15 @@ public class WordsApplication extends Application {
     private static final String TAG = "Words";
 
     @Singleton
-    @Component(modules = AndroidModule.class) interface ApplicationComponent {
+    @Component(modules = AndroidModule.class)
+    interface ApplicationComponent {
         void inject(WordsApplication application);
-        void inject(WordsDisplayActivity activity);
-        void inject(WordsMockPresenter presenter);
+    }
+
+    @Singleton
+    @Component(modules = WordsProviderModule.class)
+    interface WordsShop {
+        void provide(WordsMockPresenter presenter);
     }
 
     @Inject
@@ -36,6 +41,7 @@ public class WordsApplication extends Application {
         component = Dagger_WordsApplication$ApplicationComponent.builder()
                 .androidModule(new AndroidModule(this))
                 .build();
+
 
         component().inject(this);
 

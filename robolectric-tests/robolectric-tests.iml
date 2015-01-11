@@ -70,8 +70,8 @@
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="objenesis-1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="internal_impl-21.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="support-annotations-21.0.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="rxjava-1.0.4" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="support-annotations-21.0.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="rxandroid-0.24.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classes" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />

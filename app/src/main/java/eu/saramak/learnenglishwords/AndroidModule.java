@@ -28,7 +28,7 @@ package eu.saramak.learnenglishwords;
  * A module for Android-specific dependencies which require a {@link Context} or
  * {@link android.app.Application} to create.
  */
-@Module(complete = true)
+@Module(complete = true, library = true, injects = WordsApplication.class)
 public class AndroidModule {
     private final WordsApplication application;
 
@@ -45,7 +45,4 @@ public class AndroidModule {
         return (LocationManager) application.getSystemService(LOCATION_SERVICE);
     }
 
-    @Provides @Singleton WordsProvider provideWordsProvider(){
-        return new SlowWordsProvider();
-    }
 }

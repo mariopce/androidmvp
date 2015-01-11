@@ -19,12 +19,18 @@ public class WordsMockPresenter implements WordsPresenter {
 
     }
 
+    public WordsMockPresenter() {
+
+    }
+
     public void setProvider(WordsProvider provider) {
         this.provider = provider;
     }
 
     @Override
     public void onResume() {
+        WordsApplication.WordsShop wm = Dagger_WordsApplication$WordsShop.builder().wordsProviderModule(new WordsProviderModule(this)).build();
+        wm.provide(this);
         view.showProgress();
 
         sub = provider.getWords(1).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Words>() {
