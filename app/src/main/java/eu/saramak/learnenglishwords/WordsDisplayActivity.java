@@ -12,6 +12,9 @@ import android.widget.Button;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 
 public class WordsDisplayActivity extends FragmentActivity implements WordsSceenView {
 
@@ -97,8 +100,10 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
      */
     public static class PlaceholderFragment extends Fragment implements WordsDislpayerView {
 
-        private Button prevButton;
-        private Button nextButton;
+        @InjectView(R.id.prev_word_button)
+        Button prevButton;
+        @InjectView(R.id.next_word_button)
+        Button nextButton;
 
         public PlaceholderFragment() {
         }
@@ -107,8 +112,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_word_display, container, false);
-            prevButton = (Button) rootView.findViewById(R.id.prev_word_button);
-            nextButton = (Button) rootView.findViewById(R.id.next_word_button);
+            ButterKnife.inject(this, rootView);
             return rootView;
         }
 
