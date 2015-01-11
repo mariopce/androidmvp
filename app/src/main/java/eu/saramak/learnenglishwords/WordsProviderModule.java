@@ -6,17 +6,11 @@ import dagger.Provides;
 /**
  * Created by mario on 10.01.15.
  */
-@Module(injects = WordsProvider.class)
+@Module(injects = WordsDataStore.class)
 public class WordsProviderModule {
 
-    private WordsMockPresenter presenter;
-
-    public WordsProviderModule(WordsMockPresenter presenter){
-        this.presenter = presenter;
-    }
-
-
-    @Provides WordsProvider provideWordsProvider(){
+    @Provides
+    WordsDataStore provideWordsProvider(){
         return new SlowWordsProvider();
     }
 }

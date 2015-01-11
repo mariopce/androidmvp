@@ -24,30 +24,23 @@ public class WordsApplication extends Application {
         void inject(WordsApplication application);
     }
 
-
-
     @Inject
-    LocationManager locationManager; // for some reason.
+    LocationManager locationManager;
 
-    private ApplicationComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        component = Dagger_WordsApplication$ApplicationComponent.builder()
+        ApplicationComponent component = Dagger_WordsApplication$ApplicationComponent.builder()
                 .androidModule(new AndroidModule(this))
                 .build();
 
 
-        component().inject(this);
+        component.inject(this);
 
         List<String> providers = locationManager.getAllProviders();
         for(String prov : providers){
-            Log.d(TAG, "provider " + prov);
+            Log.d(TAG, "dataStore " + prov);
         }
-    }
-
-    public ApplicationComponent component() {
-        return component;
     }
 }

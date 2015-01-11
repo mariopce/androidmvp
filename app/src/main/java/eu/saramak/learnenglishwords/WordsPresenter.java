@@ -15,5 +15,5 @@ public interface WordsPresenter {
 
     public String getWord();
 
-    public void setProvider(WordsProvider wordsProvider);
+    public void setDataStore(WordsDataStore wordsProvider);
 }

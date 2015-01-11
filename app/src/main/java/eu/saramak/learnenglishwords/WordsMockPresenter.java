@@ -13,7 +13,8 @@ import rx.functions.Action1;
  */
 public class WordsMockPresenter implements WordsPresenter {
     private WordsSceenView view;
-    @Inject WordsProvider provider;
+    @Inject
+    WordsDataStore dataStore;
     private Subscription sub;
 
     public WordsMockPresenter(WordsSceenView wordsSceenView) {
@@ -22,22 +23,22 @@ public class WordsMockPresenter implements WordsPresenter {
 
     @Singleton
     @Component(modules = WordsProviderModule.class)
-    interface WordsShop {
-        void provide(WordsMockPresenter presenter);
+    interface WordsAppComponent extends eu.saramak.learnenglishwords.WordsAppComponent {
+        void init(WordsMockPresenter presenter);
     }
 
 
-    public void setProvider(WordsProvider provider) {
-        this.provider = provider;
+    public void setDataStore(WordsDataStore dataStore) {
+        this.dataStore = dataStore;
     }
 
     @Override
     public void onResume() {
-        WordsShop wm = Dagger_WordsMockPresenter$WordsShop.builder().wordsProviderModule(new WordsProviderModule(this)).build();
-        wm.provide(this);
+        WordsAppComponent wm = Dagger_WordsMockPresenter$WordsAppComponent.builder().wordsProviderModule(new WordsProviderModule()).build();
+        wm.init(this);
         view.showProgress();
 
-        sub = provider.getWords(1).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Words>() {
+        sub = dataStore.getWords(1).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Words>() {
             @Override
             public void call(Words words) {
                 view.enableNextButton();

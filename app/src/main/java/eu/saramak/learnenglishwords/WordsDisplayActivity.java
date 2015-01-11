@@ -31,7 +31,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
         }
         presenter = new WordsMockPresenter(this);
 
-//        presenter.setProvider(new SlowWordsProvider());
+//        presenter.setDataStore(new SlowWordsProvider());
     }
 
 

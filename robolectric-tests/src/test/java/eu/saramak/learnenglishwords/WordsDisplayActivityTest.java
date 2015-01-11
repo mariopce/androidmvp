@@ -39,15 +39,15 @@ public class WordsDisplayActivityTest {
 
         final WordsSceenView view = mock(WordsSceenView.class);
         WordsPresenter presenter = new WordsMockPresenter(view);
-//        presenter.setProvider(new WordsMemoryProvider());
+//        presenter.setDataStore(new WordsMemoryProvider());
         Scheduler.Worker worker = new TestScheduler().createWorker();
-        WordsProvider prov = new SlowWordsProvider(){
+        WordsDataStore prov = new SlowWordsProvider(){
             @Override
             public Observable<Words> getWords(int i) {
                 return Observable.just(super.getWords(i).toBlocking().first());
             }
         }; //new WordsMemoryProvider();
-        presenter.setProvider(prov);
+        presenter.setDataStore(prov);
 
         System.out.println("onResume 1");
         presenter.onResume();
