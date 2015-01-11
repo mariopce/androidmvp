@@ -12,13 +12,15 @@ import rx.functions.Action1;
  * Created by mario on 07.01.15.
  */
 public class WordsMockPresenter implements WordsPresenter {
-    private WordsSceenView view;
+    WordsSceenView view;
     @Inject
     WordsDataStore dataStore;
+
     private Subscription sub;
 
-    public WordsMockPresenter(WordsSceenView wordsSceenView) {
-        view = wordsSceenView;
+    @Inject
+    public WordsMockPresenter(WordsSceenView view) {
+        this.view = view;
     }
 
     @Singleton
@@ -34,13 +36,13 @@ public class WordsMockPresenter implements WordsPresenter {
 
     @Override
     public void onResume() {
-        WordsAppComponent wm = Dagger_WordsMockPresenter$WordsAppComponent.builder().wordsProviderModule(new WordsProviderModule()).build();
-        wm.init(this);
+
         view.showProgress();
 
         sub = dataStore.getWords(1).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Words>() {
             @Override
             public void call(Words words) {
+
                 view.enableNextButton();
                 view.enablePrevButton();
                 view.showWord("dfs");

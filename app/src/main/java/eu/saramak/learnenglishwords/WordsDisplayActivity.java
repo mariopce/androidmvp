@@ -15,21 +15,22 @@ import javax.inject.Inject;
 
 public class WordsDisplayActivity extends FragmentActivity implements WordsSceenView {
 
-    WordsPresenter presenter;
+    @Inject WordsPresenter presenter;
     private WordsDislpayerView wordDisplayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_display);
-
+        WordsAppComponent wm = Dagger_WordsMockPresenter$WordsAppComponent.builder().wordsProviderModule(new WordsProviderModule(this)).build();
+        wm.init(this);
         if (savedInstanceState == null) {
             wordDisplayerFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, (PlaceholderFragment) wordDisplayerFragment)
                     .commit();
         }
-        presenter = new WordsMockPresenter(this);
+
 
 //        presenter.setDataStore(new SlowWordsProvider());
     }
@@ -71,6 +72,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
 
     @Override
     public void enableNextButton() {
+        if (wordDisplayerFragment!=null)
         wordDisplayerFragment.enableButtons();
     }
 
@@ -86,6 +88,7 @@ public class WordsDisplayActivity extends FragmentActivity implements WordsSceen
 
     @Override
     public void showProgress() {
+        if (wordDisplayerFragment!=null)
         wordDisplayerFragment.disableButtons();
     }
 

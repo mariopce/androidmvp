@@ -9,8 +9,25 @@ import dagger.Provides;
 @Module(injects = WordsDataStore.class)
 public class WordsProviderModule {
 
+    private final WordsSceenView view;
+
+    public WordsProviderModule(WordsSceenView view){
+        this.view = view;
+    }
+
+    @Provides
+    WordsSceenView provideWordsSceenView(){
+        return view;
+    }
+
     @Provides
     WordsDataStore provideWordsProvider(){
         return new SlowWordsProvider();
     }
+
+    @Provides
+    WordsPresenter providerWordsPresenter(WordsMockPresenter impl){
+        return impl;
+    }
+
 }

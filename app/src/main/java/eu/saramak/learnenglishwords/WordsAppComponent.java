@@ -10,5 +10,5 @@ import dagger.Component;
 @Singleton
 @Component(modules = WordsProviderModule.class)
 interface WordsAppComponent {
-    void init(WordsMockPresenter presenter);
+    void init(WordsDisplayActivity activity);
 }
