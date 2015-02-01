@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>false</wildcard>
+    </configuration>
+
+    <mapping>
+        <class-a>com.example.view.model.ScreenModel</class-a>
+        <class-b>com.example.view.model.TextFieldModel</class-b>
+        <field>
+            <a>screenTitle</a>
+            <b>text</b>
+        </field>
+    </mapping>
+    <mapping map-id="ok">
+        <class-a>com.example.view.model.ScreenModel</class-a>
+        <class-b>com.example.view.model.ButtonModel</class-b>
+        <field>
+            <a>confirmButtonText</a>
+            <b>buttonLabel</b>
+        </field>
+        <field copy-by-reference="true">
+            <a>confirmButtonListener</a>
+            <b>buttonListener</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="cancel">
+        <class-a>com.example.view.model.ScreenModel</class-a>
+        <class-b>com.example.view.model.ButtonModel</class-b>
+        <field>
+            <a>rejectButtonText</a>
+            <b>buttonLabel</b>
+        </field>
+        <field copy-by-reference="true">
+            <a>rejectButtonListener</a>
+            <b>buttonListener</b>
+        </field>
+    </mapping>
+
+    <mapping >
+        <class-a>com.example.view.model.ScreenModel</class-a>
+        <class-b>com.example.view.model.EditTextModel</class-b>
+        <field>
+            <a>ageValue</a>
+            <b>text</b>
+        </field>
+        <field copy-by-reference="true">
+            <a>ageProvidedListener</a>
+            <b>textConfirmed</b>
+        </field>
+    </mapping>
+
+
+
+</mappings>

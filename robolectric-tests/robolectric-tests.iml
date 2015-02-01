@@ -74,8 +74,8 @@
     <orderEntry type="library" exported="" scope="TEST" name="rxjava-1.0.4" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="rxandroid-0.24.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classes" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="dagger-2.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="jsr250-api-1.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="butterknife-6.0.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classes" level="project" />
